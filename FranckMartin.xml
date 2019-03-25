@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<personne xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:noNamespaceSchemaLocation="personne.xsd">
+    <prenom>Franck</prenom> 
+    <prenom>Jean</prenom> 
+    <prenom>Lawrence</prenom>
+        <nom>Martin</nom>
+        <nom>Vargas</nom>
+           <nom>Martin</nom>
+        <adresse>
+            <numero>134</numero>
+            <voie>avenue George Mandel</voie>
+            <code>75004</code>
+            <ville>Paris</ville>
+        </adresse>
+        <telephone>0606067788</telephone>
+</personne>

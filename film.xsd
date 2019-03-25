@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    
+    <xs:element name="film" type="FilmType" />
+    
+    <xs:complexType name="FilmType" mixed="true">
+        <xs:sequence>
+            <xs:element ref="titre" minOccurs="1" maxOccurs="2"/>
+            <xs:element ref="sortie" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+    <!-- Définition du titre -->
+    <xs:element name="titre" type="TitreType"/>
+    
+    <xs:simpleType name="TitreType" mixed="true">
+        <xs:restriction base="xs:normalizedString">
+            <xs:minLength value="2"/>
+            <xs:maxLength value="300"/>
+        </xs:restriction>
+    </xs:simpleType>  
+    
+    <!-- Définition de la sortie -->
+    <xs:element name="sortie" type="SortieType"/>
+    
+    <xs:complexType name="SortieType" mixed="true">
+        <xs:all>
+            <xs:element name="jour" type=""/>
+            <xs:element name="mois" type=""/>
+        </xs:all>
+    </xs:complexType>  
+
+</xs:schema>

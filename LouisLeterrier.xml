@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<personne xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:noNamespaceSchemaLocation="personne.xsd">
+    <prenom>Louis</prenom> 
+        <nom>Leterrier</nom>
+        <adresse>
+            <numero>32</numero>
+            <voie>avenue Foch</voie>
+            <code>75016</code>
+            <ville>Paris</ville>
+        </adresse>
+        <telephone>0609067788</telephone>
+        <naissance>
+            Né d'un père réalisateur,François Leterrier1, et d'une mère costumière,Catherine Leterrier, 
+            née Fabius (ce qui fait de lui le neveu de Laurent Fabius) le <date>1973-06-17</date>
+            à <lieu>
+                <ville>Paris</ville>
+            </lieu>
+        </naissance>
+</personne>

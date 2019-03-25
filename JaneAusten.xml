@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<personne xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="personne.xsd">
+    <prenom>Jane</prenom> 
+    <nom>Austen</nom>
+    <naissance>née le
+        <date>1775-12-16</date>             
+        <lieu>                 
+            <ville>Steventon</ville>                 
+            <pays>Angleterre</pays>
+        </lieu>   
+        dans le Hampshire
+    </naissance> 
+    <mort>morte le
+        <date> 1817-07-18</date> à
+        <lieu>                 
+            <ville>Winchester</ville>              
+        </lieu>         
+    </mort>
+</personne>
