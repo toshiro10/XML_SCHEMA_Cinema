@@ -4,8 +4,8 @@
         <xs:group name="PersonneGroup">  
             <!-- redéfinition les éléments conservés-->
             <xs:sequence>
-               <xs:element ref="prenom" minOccurs="1" maxOccurs="4"/>
-               <xs:element ref="nom" minOccurs="1" maxOccurs="3"/>    
+                <xs:element ref="prenom" minOccurs="1" maxOccurs="4"/>
+                <xs:element ref="nom" minOccurs="1" maxOccurs="3"/>    
             </xs:sequence>
         </xs:group>   
     </xs:redefine> 
@@ -54,7 +54,7 @@
     <xs:element name="acteurs">
         <xs:complexType>
             <xs:sequence>
-                 <xs:element ref="acteur" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="acteur" minOccurs="1" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -72,5 +72,45 @@
         </xsd:restriction>
     </xs:simpleType> 
       
+    <!-- Définition de la durée -->
+    <xs:element name="temps" type="TempsType"/>
+    
+    <!-- Groupe dattribut -->
+    <xs:complexType name="TempsType">
+        <xs:sequence>
+            <xs:element ref="duree" minOccurs="1" maxOccurs="1"/> <!-- pas sûr-->
+        </xs:sequence>
+    </xs:complexType> 
+    
+    <!-- élèment vide -->
+    <xsd:element name="duree">
+        <xsd:complexType>
+            <xsd:attributeGroup ref="personattrgroup"/>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <!-- Groupe dattribut -->
+    <xsd:attributeGroup name="tempsGroup"> 
+        <xsd:attribute ref="heure" minOccurs="1" maxOccurs="1"/> 
+        <xsd:attribute ref="minute" minOccurs="1" maxOccurs="1"/> 
+    </xsd:attributeGroup>
+    
+    <!-- Définition des attributs heure et minute -->
+    <xs:element name="heure" type="HeureType"/>
+    <xs:element name="minute" type="MinuteType"/>
+    
+    <!-- Définition des types et regex -->
+    <xs:simpleType name="HeureType" >
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="TODO"/> <!-- max aussi je pens-->
+            <xs:pattern value="[0-8][0-9]\d{3}|9[0-5]\d{3}|97[1-6]\d{2}|98[6-8]\d{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
 
+    <xs:simpleType name="MinuteType" >
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="TODO"/>
+            <xs:pattern value="TODO REGEX"/>
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>
