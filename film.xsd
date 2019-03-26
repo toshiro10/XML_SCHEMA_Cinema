@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:redefine schemaLocation="personne.xsd">
+        <xs:group name="PersonneGroup">  
+            <!-- redéfinition les éléments conservés-->
+            <xs:sequence>
+               <xs:element ref="prenom" minOccurs="1" maxOccurs="4"/>
+               <xs:element ref="nom" minOccurs="1" maxOccurs="3"/>    
+            </xs:sequence>
+        </xs:group>   
+    </xs:redefine> 
     
     <xs:element name="film" type="FilmType" />
     
-    <xs:complexType name="FilmType" mixed="true">
+    <xs:complexType name="FilmType">
         <xs:sequence>
             <xs:element ref="titre" minOccurs="1" maxOccurs="2"/>
             <xs:element ref="sortie" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="realisateur" minOccurs="1" maxOccurs="10"/>
+            <xs:element ref="acteurs" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="genre" minOccurs="1" maxOccurs="4"/>
+            <xs:element ref="temps" minOccurs="1" maxOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
     
@@ -14,7 +27,7 @@
     <!-- Définition du titre -->
     <xs:element name="titre" type="TitreType"/>
     
-    <xs:simpleType name="TitreType" mixed="true">
+    <xs:simpleType name="TitreType">
         <xs:restriction base="xs:normalizedString">
             <xs:minLength value="2"/>
             <xs:maxLength value="300"/>
@@ -24,11 +37,40 @@
     <!-- Définition de la sortie -->
     <xs:element name="sortie" type="SortieType"/>
     
-    <xs:complexType name="SortieType" mixed="true">
+    <xs:complexType name="SortieType">
         <xs:all>
-            <xs:element name="jour" type=""/>
-            <xs:element name="mois" type=""/>
+            <xs:element ref="jour" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="mois" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="an" minOccurs="1" maxOccurs="1"/>
         </xs:all>
     </xs:complexType>  
+    
+    <xs:element name="jour" type="gDay"/>
+    <xs:element name="mois" type="gMonth"/>   
+    <xs:element name="an" type="gYear"/>   
+    
+    <!-- Définition réalisateurs et liste d'acteurs -->
+    <xs:element name="realisateur" substitutionGroup="personne"/>
+    <xs:element name="acteurs">
+        <xs:complexType>
+            <xs:sequence>
+                 <xs:element ref="acteur" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="acteur" substitutionGroup="personne"/>    
+    
+    <!-- Définition du genre -->
+    <xs:element name="genre" type="GenreType"/>
+    
+    <xs:simpleType name="GenreType">
+        <xsd:restriction base="xs:normalizedString">
+            <xsd:enumeration value="comedie"/>
+            <xsd:enumeration value="drame"/>
+            <xsd:enumeration value="policier"/>
+            <xsd:enumeration value="science fiction"/>
+        </xsd:restriction>
+    </xs:simpleType> 
+      
 
 </xs:schema>
