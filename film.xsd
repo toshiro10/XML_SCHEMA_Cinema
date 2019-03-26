@@ -45,9 +45,9 @@
         </xs:all>
     </xs:complexType>  
     
-    <xs:element name="jour" type="gDay"/>
-    <xs:element name="mois" type="gMonth"/>   
-    <xs:element name="an" type="gYear"/>   
+    <xs:element name="jour" type="xs:gDay"/>
+    <xs:element name="mois" type="xs:gMonth"/>   
+    <xs:element name="an" type="xs:gYear"/>   
     
     <!-- Définition réalisateurs et liste d'acteurs -->
     <xs:element name="realisateur" substitutionGroup="personne"/>
@@ -64,53 +64,46 @@
     <xs:element name="genre" type="GenreType"/>
     
     <xs:simpleType name="GenreType">
-        <xsd:restriction base="xs:normalizedString">
-            <xsd:enumeration value="comedie"/>
-            <xsd:enumeration value="drame"/>
-            <xsd:enumeration value="policier"/>
-            <xsd:enumeration value="science fiction"/>
-        </xsd:restriction>
+        <xs:restriction base="xs:normalizedString">
+            <xs:enumeration value="comedie"/>
+            <xs:enumeration value="drame"/>
+            <xs:enumeration value="policier"/>
+            <xs:enumeration value="science fiction"/>
+        </xs:restriction>
     </xs:simpleType> 
       
-    <!-- Définition de la durée -->
+    <!-- Définition de la durée, élément vide de type TempsType-->
     <xs:element name="temps" type="TempsType"/>
     
     <!-- Groupe dattribut -->
     <xs:complexType name="TempsType">
-        <xs:sequence>
-            <xs:element ref="duree" minOccurs="1" maxOccurs="1"/> <!-- pas sûr-->
-        </xs:sequence>
+        <xs:attributeGroup ref="tempsGroup"/>
     </xs:complexType> 
     
-    <!-- élèment vide -->
-    <xsd:element name="duree">
-        <xsd:complexType>
-            <xsd:attributeGroup ref="personattrgroup"/>
-        </xsd:complexType>
-    </xsd:element>
-    
     <!-- Groupe dattribut -->
-    <xsd:attributeGroup name="tempsGroup"> 
-        <xsd:attribute ref="heure" minOccurs="1" maxOccurs="1"/> 
-        <xsd:attribute ref="minute" minOccurs="1" maxOccurs="1"/> 
-    </xsd:attributeGroup>
+    <xs:attributeGroup name="tempsGroup"> 
+        <xs:attribute ref="heure"/> 
+        <xs:attribute ref="minute"/> 
+    </xs:attributeGroup>
     
     <!-- Définition des attributs heure et minute -->
-    <xs:element name="heure" type="HeureType"/>
-    <xs:element name="minute" type="MinuteType"/>
+    <xs:attribute name="heure" type="HeureType"/>
+    <xs:attribute name="minute" type="MinuteType"/>
     
     <!-- Définition des types et regex -->
     <xs:simpleType name="HeureType" >
         <xs:restriction base="xs:integer">
-            <xs:minInclusive value="TODO"/> <!-- max aussi je pens-->
-            <xs:pattern value="[0-8][0-9]\d{3}|9[0-5]\d{3}|97[1-6]\d{2}|98[6-8]\d{2}"/>
+            <xs:minInclusive value= "00"/> <!-- max aussi je pens-->
+            <xs:maxInclusive value= "30"/>
+            <xs:pattern value="[0-9]{2}"/>
         </xs:restriction>
     </xs:simpleType>
 
     <xs:simpleType name="MinuteType" >
         <xs:restriction base="xs:integer">
-            <xs:minInclusive value="TODO"/>
-            <xs:pattern value="TODO REGEX"/>
+            <xs:minInclusive value="00"/>
+            <xs:maxInclusive value= "60"/>
+            <xs:pattern value="[0-9]{2}"/>
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>
