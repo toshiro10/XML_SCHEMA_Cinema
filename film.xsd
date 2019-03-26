@@ -20,6 +20,7 @@
             <xs:element ref="acteurs" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="genre" minOccurs="1" maxOccurs="4"/>
             <xs:element ref="temps" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="synopsis" minOccurs="1" maxOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
     
@@ -90,10 +91,10 @@
     <xs:attribute name="heure" type="HeureType"/>
     <xs:attribute name="minute" type="MinuteType"/>
     
-    <!-- Définition des types et regex -->
+    <!-- Définition des types HeureType et MinuteType et leurs regex -->
     <xs:simpleType name="HeureType" >
         <xs:restriction base="xs:integer">
-            <xs:minInclusive value= "00"/> <!-- max aussi je pens-->
+            <xs:minInclusive value= "00"/>
             <xs:maxInclusive value= "30"/>
             <xs:pattern value="[0-9]{2}"/>
         </xs:restriction>
@@ -106,4 +107,27 @@
             <xs:pattern value="[0-9]{2}"/>
         </xs:restriction>
     </xs:simpleType>
+    
+    
+    <!-- Définition du synopsis -->
+    <xs:element name="synopsis" type="SynopsisType"/>
+    
+    <xs:complexType name="SynopsisType" mixed ="true">
+        <!-- on crée une séquence non-ordonnée -->
+        <xs:sequence>
+            <!-- on met un maxOccurs = unbounded pour pouvoir répéter les éléments 
+            Source : http://www.inoneo.com/en/blog/3/xml-xsd/xsd-schema-define-an-unordered-sequence -->
+            <xs:choice maxOccurs="unbounded">
+                <xs:element ref="titre" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="personne" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="prenom" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="nom" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="lieu" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>  
+    
+    <!-- substitution de peintre et personnage en personne -->
+    <xs:element name="peintre" substitutionGroup="personne"/> 
+    <xs:element name="personnage" substitutionGroup="personne"/> 
 </xs:schema>
