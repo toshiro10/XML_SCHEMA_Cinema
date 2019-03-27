@@ -22,12 +22,6 @@
             <xs:selector xpath="./salle"/>
             <xs:field xpath="@num" />
         </xs:unique >
-        <xs:unique name ="uniciteSeance" >
-            <xs:selector xpath="./salle/seance"/>
-            <xs:field xpath="@horaire" />
-            <xs:field xpath="film" />
-            <xs:field xpath="sortie/an" />
-        </xs:unique >
     </xs:element>
     
     <!-- définition du type pas demandé mais on respecte l'architecture générale-->
@@ -41,7 +35,14 @@
     </xs:complexType>
     
     <!-- définition de l'élément salle -->
-    <xs:element name="salle" type="SalleType" />  
+    <xs:element name="salle" type="SalleType">
+        <xs:unique name ="uniciteSeance" >
+            <xs:selector xpath="./seance"/>
+            <xs:field xpath="@horaire" />
+            <xs:field xpath="film" />
+            <xs:field xpath="sortie/an" />
+        </xs:unique >
+    </xs:element>
     <!-- définition du type salle -->
     <xs:complexType name="SalleType" mixed="true">
         <xs:sequence>
