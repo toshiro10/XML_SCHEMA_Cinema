@@ -10,7 +10,13 @@
         </xs:group>   
     </xs:redefine> 
     
-    <xs:element name="film" type="FilmType" />
+    <xs:element name="film" type="FilmType">
+        <xs:key name="filmKey">
+            <xs:selector xpath="."/>
+            <xs:field xpath="./titre"/>
+            <xs:field xpath="./sortie/an"/>
+        </xs:key>
+    </xs:element>
     
     <xs:complexType name="FilmType">
         <xs:sequence>

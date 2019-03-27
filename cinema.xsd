@@ -88,11 +88,6 @@
     <xs:complexType name="SeanceType">
         <xs:sequence>
             <xs:element name="film" type="TitreFilm" minOccurs="1" maxOccurs="1">
-                <xs:key name="filmKey">
-                    <xs:selector xpath="./seance"/>
-                    <xs:field xpath="./film"/>
-                    <xs:field xpath="./sortie/an"/>
-                </xs:key>
             </xs:element>
                 
             
