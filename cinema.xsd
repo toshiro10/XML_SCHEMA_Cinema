@@ -17,7 +17,18 @@
     </xs:redefine>
     
     <!-- définition de l'élément cinéma -->
-    <xs:element name="cinema" type="CinemaType" />
+    <xs:element name="cinema" type="CinemaType" >
+        <xs:unique name ="uniciteNum" >
+            <xs:selector xpath="./salle"/>
+            <xs:field xpath="@num" />
+        </xs:unique >
+        <xs:unique name ="uniciteSeance" >
+            <xs:selector xpath="./salle/seance"/>
+            <xs:field xpath="@horaire" />
+            <xs:field xpath="film" />
+            <xs:field xpath="sortie/an" />
+        </xs:unique >
+    </xs:element>
     
     <!-- définition du type pas demandé mais on respecte l'architecture générale-->
     <xs:complexType name="CinemaType">
@@ -65,11 +76,26 @@
     </xs:simpleType>
     
     <!-- définition de l'élément seance -->
-    <xs:element name="seance" type="SeanceType" />
-     <!-- définition du type seance -->
+    <xs:element name="seance" type="SeanceType" >
+        <xs:keyref name="filmKeyRef"
+                   refer="filmKey">
+            <xs:selector xpath="." />
+            <xs:field xpath="./film"/>
+            <xs:field xpath="./sortie/an"/>
+        </xs:keyref>
+    </xs:element>
+    <!-- définition du type seance -->
     <xs:complexType name="SeanceType">
         <xs:sequence>
-            <xs:element name="film" type="TitreFilm" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="film" type="TitreFilm" minOccurs="1" maxOccurs="1">
+                <xs:key name="filmKey">
+                    <xs:selector xpath="./seance"/>
+                    <xs:field xpath="./film"/>
+                    <xs:field xpath="./sortie/an"/>
+                </xs:key>
+            </xs:element>
+                
+            
             <!-- sortie est déjà définit dans film.xsd on rajoute maxOccurs=2 --> 
             <xs:element ref="sortie" minOccurs="1" maxOccurs="2"/>
             <!-- un film peut avoir 0 à 2 remarques --> 
@@ -84,9 +110,9 @@
     </xs:simpleType>
     
     <!-- définition de l'élément remarque -->
-   <xs:element name="remarque" type="RemarqueType" />
+    <xs:element name="remarque" type="RemarqueType" />
    
-   <xs:simpleType name="RemarqueType">
+    <xs:simpleType name="RemarqueType">
         <xs:restriction base="xs:normalizedString">
             <xs:enumeration value="Réservation conseillée"/>
             <xs:enumeration value="Interdit au moins de 16 ans"/>
@@ -100,7 +126,7 @@
     <xs:attribute name="horaire" type="HoraireType"/>
     
     <xs:simpleType name="HoraireType">
-       <xs:restriction base="xs:normalizedString">
+        <xs:restriction base="xs:normalizedString">
             <xs:pattern value="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:00.000(\s(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:00.000)*"/>
         </xs:restriction>
     </xs:simpleType> 
