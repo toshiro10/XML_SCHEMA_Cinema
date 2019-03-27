@@ -69,7 +69,7 @@
      <!-- définition du type seance -->
     <xs:complexType name="SeanceType">
         <xs:sequence>
-            <xs:element ref="film" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="film" type="TitreFilm" minOccurs="1" maxOccurs="1"/>
             <!-- sortie est déjà définit dans film.xsd on rajoute maxOccurs=2 --> 
             <xs:element ref="sortie" minOccurs="1" maxOccurs="2"/>
             <!-- un film peut avoir 0 à 2 remarques --> 
@@ -78,9 +78,6 @@
         <!-- 1 seul attribut? --> 
         <xs:attribute ref="horaire" use="required" /> 
     </xs:complexType>
-    
-    <!-- définition de l'élément film -->
-    <xs:element name="film" type="TitreFilm" />
     
     <xs:simpleType name="TitreFilm">
         <xs:restriction base="xs:normalizedString" />
