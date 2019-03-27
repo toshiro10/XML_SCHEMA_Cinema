@@ -12,9 +12,9 @@
     </xs:complexType>
     
     <xs:complexType name="DefautImageType">
-        <xs:attribute ref="width"/> 
-        <xs:attribute ref="heigth"/> 
-        <xs:attribute ref="alt"/> 
+        <xs:attribute ref="width" use="optional" /> 
+        <xs:attribute ref="heigth" use="optional" /> 
+        <xs:attribute ref="alt" use="optional" /> 
     </xs:complexType>
     
     <!-- Définition des attributs width height et alt -->
@@ -43,8 +43,8 @@
     
     <!-- Groupe dattribut FileAttributeGroup -->
     <xs:attributeGroup name="FileAttributeGroup"> 
-        <xs:attribute ref="source"/> 
-        <xs:attribute ref="uri"/> 
+        <xs:attribute ref="source" use="optional" /> 
+        <xs:attribute ref="uri" use="optional" /> 
     </xs:attributeGroup>
     
     <!-- Définition des attributs source et uri -->
