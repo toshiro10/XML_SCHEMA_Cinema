@@ -22,6 +22,17 @@
             <xs:selector xpath="./salle"/>
             <xs:field xpath="@num" />
         </xs:unique >
+        <xs:key name="filmKey">
+            <xs:selector xpath="./film" />
+            <xs:field xpath="./titre"/>
+            <xs:field xpath="./sortie/an"/>
+        </xs:key>
+        <xs:keyref name="filmKeyRef" refer="filmKey">
+            <xs:selector xpath="./salle/seance" />
+            <xs:field xpath="./film"/>
+            <xs:field xpath="./sortie/an"/>
+        </xs:keyref>
+        
     </xs:element>
     
     <!-- définition du type pas demandé mais on respecte l'architecture générale-->
@@ -77,21 +88,11 @@
     </xs:simpleType>
     
     <!-- définition de l'élément seance -->
-    <xs:element name="seance" type="SeanceType" >
-        <xs:keyref name="filmKeyRef"
-                   refer="filmKey">
-            <xs:selector xpath="." />
-            <xs:field xpath="./film"/>
-            <xs:field xpath="./sortie/an"/>
-        </xs:keyref>
-    </xs:element>
+    <xs:element name="seance" type="SeanceType" />
     <!-- définition du type seance -->
     <xs:complexType name="SeanceType">
         <xs:sequence>
-            <xs:element name="film" type="TitreFilm" minOccurs="1" maxOccurs="1">
-            </xs:element>
-                
-            
+            <xs:element name="film" type="TitreFilm" minOccurs="1" maxOccurs="1"/>                         
             <!-- sortie est déjà définit dans film.xsd on rajoute maxOccurs=2 --> 
             <xs:element ref="sortie" minOccurs="1" maxOccurs="2"/>
             <!-- un film peut avoir 0 à 2 remarques --> 
