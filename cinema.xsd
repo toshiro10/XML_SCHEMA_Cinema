@@ -18,15 +18,19 @@
     
     <!-- définition de l'élément cinéma -->
     <xs:element name="cinema" type="CinemaType" >
+        <!-- contrainte d'unicité du num de salle -->
         <xs:unique name ="uniciteNum" >
             <xs:selector xpath="./salle"/>
             <xs:field xpath="@num" />
         </xs:unique >
+        <!-- clé issu de film de type FilmType -->
         <xs:key name="filmKey">
             <xs:selector xpath="./film" />
             <xs:field xpath="./titre"/>
             <xs:field xpath="./sortie/an"/>
         </xs:key>
+        
+        <!-- référence de la clé de film de type TitreFilm -->
         <xs:keyref name="filmKeyRef" refer="filmKey">
             <xs:selector xpath="./salle/seance" />
             <xs:field xpath="./film"/>
@@ -47,6 +51,7 @@
     
     <!-- définition de l'élément salle -->
     <xs:element name="salle" type="SalleType">
+        <!-- contrainte d'unicité de la séance -->
         <xs:unique name ="uniciteSeance" >
             <xs:selector xpath="./seance"/>
             <xs:field xpath="@horaire" />
@@ -81,7 +86,7 @@
     </xs:simpleType>
     
     <xs:simpleType name="PlaceType">
-        <xs:restriction base="xs:decimal">
+        <xs:restriction base="xs:integer">
             <xs:minInclusive value="25"/>
             <xs:maxInclusive value= "1500"/>
         </xs:restriction>
@@ -94,7 +99,7 @@
         <xs:sequence>
             <xs:element name="film" type="TitreFilm" minOccurs="1" maxOccurs="1"/>                         
             <!-- sortie est déjà définit dans film.xsd on rajoute maxOccurs=2 --> 
-            <xs:element ref="sortie" minOccurs="1" maxOccurs="2"/>
+            <xs:element ref="sortie" minOccurs="1" maxOccurs="unbounded"/>
             <!-- un film peut avoir 0 à 2 remarques --> 
             <xs:element ref="remarque" minOccurs="0" maxOccurs="2"/>
         </xs:sequence>

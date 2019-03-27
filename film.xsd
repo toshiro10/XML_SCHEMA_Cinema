@@ -39,10 +39,11 @@
     <xs:element name="sortie" type="SortieType"/>
     
     <xs:complexType name="SortieType">
+        <!-- all = ordre de sortie non précisé et une seule occurence de chacun-->
         <xs:all>
-            <xs:element ref="jour" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="mois" minOccurs="1" maxOccurs="1"/>
-            <xs:element ref="an" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="jour"/>
+            <xs:element ref="mois"/>
+            <xs:element ref="an"/>
         </xs:all>
     </xs:complexType>  
     

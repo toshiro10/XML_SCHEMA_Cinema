@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <film xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:noNamespaceSchemaLocation="film.xsd">
+      xsi:noNamespaceSchemaLocation="film.xsd">
     <titre>BIG EYES</titre>
     <!--  <image source="BIG_EYES" width="200" height="200"/>-->
     <!-- <image   uri="///C:/Users/mj/Pictures/Photos/bigEye.jpg" width="200" heigth="200"/>-->

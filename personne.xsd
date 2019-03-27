@@ -9,10 +9,11 @@
             </xs:sequence>
         </xs:group>   
     </xs:redefine>
-     <!-- definir ce qui a de nouveau -->
+     <!-- Définition personne -->
      <xs:element name="personne" type="PersonneType"/>
 
      <xs:complexType name="PersonneType" mixed="true">
+         <!-- Ordre prédéfini -->
 	<xs:sequence>
             <xs:group ref = "PersonneGroup"/>
             <xs:element ref="naissance" minOccurs="0" maxOccurs="1"/>
@@ -20,6 +21,7 @@
 	</xs:sequence>
     </xs:complexType>
     
+    <!-- Définition PersonneGroup -->
     <xs:group name="PersonneGroup">
         <xs:sequence>
             <xs:element ref="prenom" minOccurs="1" maxOccurs="4"/>
@@ -29,9 +31,11 @@
         </xs:sequence>
     </xs:group>   
 
+    <!-- Substitution de name en nom & firstname en prenom -->
     <xs:element name="nom" substitutionGroup="name"/>
     <xs:element name="prenom" substitutionGroup="firstname"/>
     
+    <!-- Définition naissance et mort -->
     <xs:element name="naissance" type="DateLieuType"/>
     <xs:element name="mort" type="DateLieuType"/>
       <!-- faire une substitution pour firstName et name-->

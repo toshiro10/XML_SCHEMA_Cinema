@@ -28,7 +28,7 @@
         <xs:restriction base="xs:decimal">
             <xs:minInclusive value="10"/>
             <xs:maxInclusive value= "1000"/>
-            <xs:pattern value="\d+([\.]\d{2})?"/><!-- regex to check... -->
+            <xs:pattern value="\d+([\.]\d{2})?"/>
         </xs:restriction>
     </xs:simpleType>
     

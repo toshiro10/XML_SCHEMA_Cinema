@@ -1,49 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <film xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	 xsi:noNamespaceSchemaLocation="film.xsd">
-        <titre>BIRDMAN</titre>
-      <!--<image source="BIRDMAN" width="200" height="200"/>-->
+<film xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="film.xsd">
+    <titre>BIRDMAN</titre>
+    <!--<image source="BIRDMAN" width="200" height="200"/>-->
     <!--<image   uri="///C:/Users/mj/Pictures/Photos/birdman.jpg" width="200" height="200"/> -->
-        <sortie> <jour>---25</jour> 
-            <mois>--02</mois> 
-            <an>2015</an>   
-        </sortie>
-        <realisateur>
-            <prenom>Alejandro</prenom> 
-            <nom>Gonzalez</nom> 
-            <nom>Inarritu</nom> 
-        </realisateur>
-        <acteurs>
-            <acteur> 
-                <prenom>Michael</prenom>
-                <nom>Keaton</nom>
-            </acteur>
-            <acteur> 
-                <prenom>Edward</prenom>
-                <nom>Norton</nom>
-            </acteur>
-            <acteur> 
-                <prenom>Zach</prenom>
-                <nom>Galifianakis</nom>
-            </acteur>
-            <acteur> 
-                <prenom>Naomi</prenom>
-                <nom>Galifianakis</nom>
-            </acteur>
-        </acteurs>
-        <genre>comedie</genre>
-        <temps heure="02" minute="00"/>
-        <synopsis>
-          À l'époque où il incarnait un célèbre super-héros, 
-            <personnage>
-                <prenom>Riggan </prenom> 
+    <sortie> 
+        <jour>---25</jour> 
+        <mois>--02</mois> 
+        <an>2015</an>   
+    </sortie>
+    <realisateur>
+        <prenom>Alejandro</prenom> 
+        <nom>Gonzalez</nom> 
+        <nom>Inarritu</nom> 
+    </realisateur>
+    <acteurs>
+        <acteur> 
+            <prenom>Michael</prenom>
+            <nom>Keaton</nom>
+        </acteur>
+        <acteur> 
+            <prenom>Edward</prenom>
+            <nom>Norton</nom>
+        </acteur>
+        <acteur> 
+            <prenom>Zach</prenom>
+            <nom>Galifianakis</nom>
+        </acteur>
+        <acteur> 
+            <prenom>Naomi</prenom>
+            <nom>Galifianakis</nom>
+        </acteur>
+    </acteurs>
+    <genre>comedie</genre>
+    <temps heure="02" minute="00"/>
+    <synopsis>
+        À l'époque où il incarnait un célèbre super-héros, 
+        <personnage>
+            <prenom>Riggan </prenom> 
             <nom>Thomson</nom>
-            </personnage>
-              était mondialement connu. 
-            Mais de cette célébrité il ne reste plus grand-chose,
-            et il tente aujourd'hui de monter une pièce de théâtre à 
-            <lieu>
-                <ville>Broadway</ville>
-            </lieu> dans l'espoir de renouer avec sa gloire perdue. 
-        </synopsis>
-    </film>
+        </personnage>
+        était mondialement connu. 
+        Mais de cette célébrité il ne reste plus grand-chose,
+        et il tente aujourd'hui de monter une pièce de théâtre à 
+        <lieu>
+            <ville>Broadway</ville>
+        </lieu> dans l'espoir de renouer avec sa gloire perdue. 
+    </synopsis>
+</film>
