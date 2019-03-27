@@ -12,15 +12,15 @@
     </xs:complexType>
     
     <xs:complexType name="DefautImageType">
-        <xs:attribute ref="weigth"/> 
+        <xs:attribute ref="width"/> 
         <xs:attribute ref="heigth"/> 
         <xs:attribute ref="alt"/> 
     </xs:complexType>
     
-    <!-- Définition des attributs weight, height et alt -->
-    <xs:attribute name="weigth" type="DimensionType" use="optionnal"/>
-    <xs:attribute name="heigth" type="DimensionType" use="optionnal"/>
-    <xs:attribute name="alt" type="TexteType" use="optionnal"/>
+    <!-- Définition des attributs width height et alt -->
+    <xs:attribute name="width" type="DimensionType"/>
+    <xs:attribute name="heigth" type="DimensionType"/>
+    <xs:attribute name="alt" type="TexteType"/>
     
     <!-- Définition du type DimensionType : de 10 à 1000, 
     avec deux chiffres après la virgule -->
@@ -28,7 +28,7 @@
         <xs:restriction base="xs:decimal">
             <xs:minInclusive value="10"/>
             <xs:maxInclusive value= "1000"/>
-            <xs:pattern value="p\{N}\.\p{Nd}\p{Nd}"/><!-- regex to check... -->
+            <xs:pattern value="\d+([\.]\d{2})?"/><!-- regex to check... -->
         </xs:restriction>
     </xs:simpleType>
     
@@ -36,8 +36,8 @@
     de 2 à 500 caractères -->
     <xs:simpleType name="TexteType" >
         <xs:restriction base="xs:normalizedString">
-            <xs:minInclusive value="2"/>
-            <xs:maxInclusive value= "500"/>
+            <xs:minLength value="2"/>
+            <xs:maxLength value= "500"/>
         </xs:restriction>
     </xs:simpleType>
     
@@ -48,8 +48,8 @@
     </xs:attributeGroup>
     
     <!-- Définition des attributs source et uri -->
-    <xs:attribute name="source" type="xs:ENTITY" use="optionnal"/>
-    <xs:attribute name="uri" type="xs:anyURI" use="optionnal"/>
+    <xs:attribute name="source" type="xs:ENTITY"/>
+    <xs:attribute name="uri" type="xs:anyURI"/>
     
     <xs:notation name="JPEG" public="image/jpg" system="JPG_viewer.exe"/>
 </xs:schema>

@@ -11,4 +11,4 @@ heigth NMTOKEN #IMPLIED
 alt CDATA #IMPLIED> ]>
 <image xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="image_entity.xsd"
-       source="BIG_EYES" width="200" heigth="200"/>  
+       source="BIG_EYES" width="200.00" heigth="200"/>  
