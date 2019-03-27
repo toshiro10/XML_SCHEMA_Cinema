@@ -83,8 +83,8 @@
     
     <!-- Groupe dattribut -->
     <xs:attributeGroup name="tempsGroup"> 
-        <xs:attribute ref="heure"/> 
-        <xs:attribute ref="minute"/> 
+        <xs:attribute ref="heure" use="required"/> 
+        <xs:attribute ref="minute" use="required"/> 
     </xs:attributeGroup>
     
     <!-- Définition des attributs heure et minute -->

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <!-- inclusion du schéma image_source.xsd note : on pourrait utiliser redefine sans éléments redéfinis -->
+    <xs:include schemaLocation="image_source.xsd"/>
+    <!-- redéfinition du schéma film.xsd -->
+    <xs:redefine schemaLocation="film.xsd">
+        <!-- on ajoute l'élement image au type FilmType -->
+        <xs:complexType name="FilmType">
+            <xs:complexContent>
+                <xs:extension base="FilmType">
+                    <xs:sequence>
+                        <xs:element name="image" minOccurs="1" maxOccurs="1"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:redefine>
+    
+    <!-- définition de l'élément cinéma -->
+    <xs:element name="cinema" type="CinemaType" />
+    
+    <!-- définition du type pas demandé mais on respecte l'architecture générale-->
+    <xs:complexType name="CinemaType">
+        <xs:sequence>
+            <xs:element ref="nom" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="adresse" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="salle" minOccurs="1" maxOccurs="40"/>
+            <xs:element ref="film" minOccurs="1" maxOccurs="200"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- définition de l'élément salle -->
+    <xs:element name="salle" type="SalleType" />  
+    <!-- définition du type salle -->
+    <xs:complexType name="SalleType" mixed="true">
+        <xs:sequence>
+            <xs:element ref="seance" minOccurs="1" maxOccurs="7"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="SalleGroup"/>
+    </xs:complexType> 
+    
+    <!-- Groupe dattribut salle-->
+    <xs:attributeGroup name="SalleGroup"> 
+        <xs:attribute ref="num" use="required"/> 
+        <xs:attribute ref="place" use="required"/> 
+    </xs:attributeGroup>
+    
+    <!-- définition des attributs -->
+    <xs:attribute name="num" type="NumType"/>
+    <xs:attribute name="place" type="PlaceType"/>
+    
+    <!-- définition des types des attributs -->
+    <xs:simpleType name="NumType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value= "40"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="PlaceType">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="25"/>
+            <xs:maxInclusive value= "1500"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- définition de l'élément seance -->
+    <xs:element name="seance" type="SeanceType" />
+     <!-- définition du type seance -->
+    <xs:complexType name="SeanceType">
+        <xs:sequence>
+            <xs:element ref="film" minOccurs="1" maxOccurs="1"/>
+            <!-- sortie est déjà définit dans film.xsd on rajoute maxOccurs=2 --> 
+            <xs:element ref="sortie" minOccurs="1" maxOccurs="2"/>
+            <!-- un film peut avoir 0 à 2 remarques --> 
+            <xs:element ref="remarque" minOccurs="0" maxOccurs="2"/>
+        </xs:sequence>
+        <!-- 1 seul attribut? --> 
+        <xs:attribute ref="horaire" use="required" /> 
+    </xs:complexType>
+    
+    <!-- définition de l'élément film -->
+    <xs:element name="film" type="TitreFilm" />
+    
+    <xs:simpleType name="TitreFilm">
+        <xs:restriction base="xs:normalizedString" />
+    </xs:simpleType>
+    
+    <!-- définition de l'élément remarque -->
+   <xs:element name="remarque" type="RemarqueType" />
+   
+   <xs:simpleType name="RemarqueType">
+        <xs:restriction base="xs:normalizedString">
+            <xs:enumeration value="Réservation conseillée"/>
+            <xs:enumeration value="Interdit au moins de 16 ans"/>
+            <xs:enumeration value="Attention aux personnes sensibles"/>
+            <xs:enumeration value="Version française"/>
+            <xs:enumeration value="Version originale sous titrée"/>
+        </xs:restriction>
+    </xs:simpleType> 
+    
+    <!-- définition de l'attribut horaire -->
+    <xs:attribute name="horaire" type="HoraireType"/>
+    
+    <xs:simpleType name="HoraireType">
+       <xs:restriction base="xs:normalizedString">
+            <xs:pattern value="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:00.000(\s(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:00.000)*"/>
+        </xs:restriction>
+    </xs:simpleType> 
+    
+</xs:schema>
