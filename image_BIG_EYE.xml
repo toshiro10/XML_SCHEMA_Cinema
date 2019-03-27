@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE image [
+<!ENTITY BIG_EYES SYSTEM "///D:/M2/XML/XML_SCHEMA/TP_XML_SCHEMA/VALIDATION/bigEye.jpg" NDATA JPEG >
+<!NOTATION JPEG SYSTEM "image/jpg">
+<!ELEMENT image EMPTY>
+<!ATTLIST image xmlns:xsi CDATA #IMPLIED
+xsi:noNamespaceSchemaLocation CDATA #IMPLIED
+source ENTITY #IMPLIED
+width NMTOKEN #IMPLIED
+heigth NMTOKEN #IMPLIED
+alt CDATA #IMPLIED> ]>
+<image xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="image_entity.xsd"
+       source="BIG_EYES" width="200" heigth="200"/>  

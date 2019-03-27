@@ -1,63 +1,67 @@
-<?xml version="1.0" encoding="UTF-8"?>     
-    <film xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	 xsi:noNamespaceSchemaLocation="film.xsd">
-        <titre>BIG EYES</titre>
-     <!--  <image source="BIG_EYES" width="200" height="200"/>-->
-       <!-- <image   uri="///C:/Users/mj/Pictures/Photos/bigEye.jpg" width="200" heigth="200"/>-->
-        <sortie> 
-            <jour>---18</jour> 
-            <mois>--03</mois>
-            <an>2015</an> 
-        </sortie>
-        <realisateur>
-            <prenom>Tim</prenom> 
-            <nom>Burton</nom>
-        </realisateur>
-        <acteurs>
-            <acteur> 
-                <prenom>Amy</prenom>
-                <nom>Adams</nom>
-            </acteur>
-            <acteur> 
-                <prenom>Christoph</prenom>
-                <nom>Waltz</nom>
-            </acteur>
-            <acteur> 
-                <prenom>Krysten</prenom>
-                <nom>Ritter</nom>
-            </acteur>
-            <acteur> 
-                <prenom>Jason</prenom>
-                <nom>Schwartzman</nom>
-            </acteur>
-            <acteur> 
-                <prenom>Terence</prenom>
-                <nom>Stamp</nom>
-            </acteur>
-        </acteurs>
-        <genre>drame</genre>
-        <temps heure="01" minute="46"/> 
-        <synopsis>
-            <titre>BIG EYES</titre> raconte la scandaleuse histoire vraie de l’une 
-            des plus grandes impostures de l’histoire de l’art.
-           Le 
-            <peintre>  <prenom> Walter </prenom> 
-            <nom>Keane</nom> </peintre>
-           a connu un succès phénoménal et révolutionné 
-            le commerce de l’art grâce à ses énigmatiques tableaux représentant
-            des enfants malheureux aux yeux immenses. 
-            La surprenante et choquante vérité a cependant fini par éclater : 
-            ces toiles n’avaient pas été peintes par 
-            <prenom>Walter</prenom> mais par sa femme, 
-            <peintre>
-                <prenom>Margaret Doris</prenom><prenom>Doris</prenom>
-                <nom>Hawkins</nom><nom>Keane</nom>
-            </peintre>. 
-            Le film se concentre sur l’éveil artistique de Margaret,
-            le succès phénoménal de ses tableaux, sa relation tumultueuse avec
-            son mari, qui a connu la gloire en s’attribuant tout le mérite de son travail et 
-            le divorce des 
-            <nom>Keane</nom>. 
-        </synopsis>
-    </film>
+<?xml version="1.0" encoding="UTF-8"?>
+<film xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="film.xsd">
+    <titre>BIG EYES</titre>
+    <!--  <image source="BIG_EYES" width="200" height="200"/>-->
+    <!-- <image   uri="///C:/Users/mj/Pictures/Photos/bigEye.jpg" width="200" heigth="200"/>-->
+    <sortie> 
+        <jour>---18</jour> 
+        <mois>--03</mois>
+        <an>2015</an> 
+    </sortie>
+    <realisateur>
+        <prenom>Tim</prenom> 
+        <nom>Burton</nom>
+    </realisateur>
+    <acteurs>
+        <acteur> 
+            <prenom>Amy</prenom>
+            <nom>Adams</nom>
+        </acteur>
+        <acteur> 
+            <prenom>Christoph</prenom>
+            <nom>Waltz</nom>
+        </acteur>
+        <acteur> 
+            <prenom>Krysten</prenom>
+            <nom>Ritter</nom>
+        </acteur>
+        <acteur> 
+            <prenom>Jason</prenom>
+            <nom>Schwartzman</nom>
+        </acteur>
+        <acteur> 
+            <prenom>Terence</prenom>
+            <nom>Stamp</nom>
+        </acteur>
+    </acteurs>
+    <genre>drame</genre>
+    <temps heure="01" minute="46"/> 
+    <synopsis>
+        <titre>BIG EYES</titre> raconte la scandaleuse histoire vraie de l’une 
+        des plus grandes impostures de l’histoire de l’art.
+        Le 
+        <peintre>  
+            <prenom> Walter </prenom> 
+            <nom>Keane</nom> 
+        </peintre>
+        a connu un succès phénoménal et révolutionné 
+        le commerce de l’art grâce à ses énigmatiques tableaux représentant
+        des enfants malheureux aux yeux immenses. 
+        La surprenante et choquante vérité a cependant fini par éclater : 
+        ces toiles n’avaient pas été peintes par 
+        <prenom>Walter</prenom> mais par sa femme, 
+        <peintre>
+            <prenom>Margaret Doris</prenom>
+            <prenom>Doris</prenom>
+            <nom>Hawkins</nom>
+            <nom>Keane</nom>
+        </peintre>. 
+        Le film se concentre sur l’éveil artistique de Margaret,
+        le succès phénoménal de ses tableaux, sa relation tumultueuse avec
+        son mari, qui a connu la gloire en s’attribuant tout le mérite de son travail et 
+        le divorce des 
+        <nom>Keane</nom>. 
+    </synopsis>
+</film>
     

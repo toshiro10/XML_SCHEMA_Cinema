@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-    
-    
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">    
     <xs:element name="image" type="ImageType" />
     
     <!-- on définit ImageType en se basant sur DefautImageType -->
@@ -24,13 +22,13 @@
     <xs:attribute name="heigth" type="DimensionType" use="optionnal"/>
     <xs:attribute name="alt" type="TexteType" use="optionnal"/>
     
-    <!-- Définition du type DimensionType : de 10 à 10000, 
+    <!-- Définition du type DimensionType : de 10 à 1000, 
     avec deux chiffres après la virgule -->
-    <xs:simpleType name="DimensionType" >
-        <xs:restriction base="xs:integer">
+    <xs:simpleType name="DimensionType">
+        <xs:restriction base="xs:decimal">
             <xs:minInclusive value="10"/>
-            <xs:maxInclusive value= "10000"/>
-            <xs:pattern value="p\{N}(\.\p{Nd}{2}"/><!-- regex to check... -->
+            <xs:maxInclusive value= "1000"/>
+            <xs:pattern value="p\{N}\.\p{Nd}\p{Nd}"/><!-- regex to check... -->
         </xs:restriction>
     </xs:simpleType>
     
